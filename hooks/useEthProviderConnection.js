@@ -15,8 +15,6 @@ export function useEthProviderConnection() {
 			const provider = await detectEthereumProvider();
 
 			if (provider) {
-				setIsUsersWalletConnected(true);
-
 				if (provider.selectedAddress) {
 					setConnectedWallets([provider.selectedAddress]);
 				}
@@ -39,13 +37,19 @@ export function useEthProviderConnection() {
 
 	const onAccountChange = (accounts) => {
 		if (accounts.length === 0) {
-			setIsUsersWalletConnected(false);
 			window.location.reload();
 		} else {
-			setIsUsersWalletConnected(true);
 			setConnectedWallets(accounts);
 		}
 	};
+
+	useEffect(() => {
+		if (connectedWallets.length === 0) {
+			setIsUsersWalletConnected(false);
+		} else {
+			setIsUsersWalletConnected(true);
+		}
+	}, [connectedWallets.length]);
 
 	useEffect(() => {
 		//Chcek if user has metamask
