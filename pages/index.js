@@ -54,6 +54,9 @@ export default function Home() {
 		connectedWallets,
 	} = useEthProviderConnection();
 
+	console.log(isUsersWalletConnected, "IS WALLET CONNECTED");
+	console.log(connectedWallets, "CONNECTED WALLETS");
+
 	const connectWallet = async () => {
 		try {
 			await getProviderOrSigner();
