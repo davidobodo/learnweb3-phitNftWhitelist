@@ -140,6 +140,19 @@ export default function Home() {
 					/>
 				</div>
 				<AlertModal isCheckingProvider={isCheckingProvider} isCheckingWhitelist={isCheckingWhitelist} />
+
+				<p className="text-white text-base absolute bottom-[10px]">
+					NOTE: This project is a "modified clone" of &nbsp;
+					<a href="https://github.com/LearnWeb3DAO/Whitelist-Dapp" target="_blank" className="underline">
+						LearnWeb3 Whitelist Dapp
+					</a>
+					,&nbsp; as one of the best ways to ensure knowledge sticks is to modify a tutorial. <br /> 5000 thumbs up 👍🏾
+					to{" "}
+					<a href="https://learnweb3.io/" target="_blank" className="underline">
+						LearnWeb3
+					</a>{" "}
+					for making learning web3 easy
+				</p>
 			</div>
 		</div>
 	);
