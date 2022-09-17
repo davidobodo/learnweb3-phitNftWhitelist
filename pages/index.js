@@ -54,9 +54,6 @@ export default function Home() {
 		connectedWallets,
 	} = useEthProviderConnection();
 
-	console.log(isUsersWalletConnected, "IS WALLET CONNECTED");
-	console.log(connectedWallets, "CONNECTED WALLETS");
-
 	const connectWallet = async () => {
 		try {
 			await getProviderOrSigner();
@@ -122,6 +119,11 @@ export default function Home() {
 			</Head>
 			<Particle />
 			<div className="relative z-10 h-screen flex flex-col items-center justify-center text-center">
+				{connectedWallets.length > 0 && (
+					<p className="absolute top-[10px] translate-x-[-50%] left-[50%] text-white">
+						Connected Wallet: {connectedWallets[0]}
+					</p>
+				)}
 				<h1 className="text-[12vw] font-druk leading-[0.8em] text-white">Explore &apos;PHIT NFT&apos; Collection</h1>
 				<p className="text-white mb-12 text-base">
 					(Join the whitelist to be given priviledge when the presale of these special NFTS begins)
@@ -203,6 +205,8 @@ function Info({
 		if (hasUserJoinedWhitelist) {
 			return <div>Congratulations on joining the whitelist</div>;
 		}
+
+		return <Button onClick={connectWallet}>Connect Wallet</Button>;
 	} else {
 		return (
 			<>
